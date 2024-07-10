@@ -1,0 +1,53 @@
+ 
+#include   
+  
+// Function to sort an array using quicksort algorithm  
+void quicksort(int arr[], int low, int high) {  
+    int i, j, pivot, temp;  
+    if (low &lt; high) {  
+        pivot = low;  
+        i = low;  
+        j = high;  
+        while (i &lt; j) {  
+            while (arr[i] &lt;= arr[pivot] &amp;&amp; i &lt; high)  
+                i++;  
+            while (arr[j] &gt; arr[pivot] &amp;&amp; j &gt; low)  
+                j--;  
+            if (i &lt; j) {  
+                temp = arr[i];  
+                arr[i] = arr[j];  
+                arr[j] = temp;  
+            }  
+        }  
+        temp = arr[pivot];  
+        arr[pivot] = arr[j];  
+        arr[j] = temp;  
+        quicksort(arr, low, j - 1);  
+        quicksort(arr, j + 1, high);  
+    }  
+}  
+  
+// Function to find the maximum element in a sorted array  
+int findMax(int arr[], int n) {  
+    return arr[n - 1];  
+}  
+  
+int main() {  
+    int arr1[] = {};  
+    int n1 = sizeof(arr1) / sizeof(arr1);  
+    if (n1 == 0) {  
+        printf("List is empty\n");  
+        return 0;  
+    }  
+    quicksort(arr1, 0, n1 - 1);  
+    int result1 = findMax(arr1, n1);  
+    printf("%d\n", result1);  
+  
+    int arr2[] = {5};  
+    int n2 = sizeof(arr2) / sizeof(arr2);  
+    quicksort(arr2, 0, n2 - 1);  
+    int result2 = findMax(arr2, n2);  
+    printf("%d\n", result2);  
+  
+    return 0;  
+}  
