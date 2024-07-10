@@ -1,0 +1,20 @@
+int findPaths(int m, int n, int N, int i, int j) {
+    int MOD = 1000000007;
+    int dp[m][n][N + 1];
+    memset(dp, 0, sizeof(dp));
+    
+    for (int step = 1; step <= N; ++step) {
+        for (int x = 0; x < m; ++x) {
+            for (int y = 0; y < n; ++y) {
+                long up = (x == 0) ? 1 : dp[x - 1][y][step - 1];
+                long down = (x == m - 1) ? 1 : dp[x + 1][y][step - 1];
+                long left = (y == 0) ? 1 : dp[x][y - 1][step - 1];
+                long right = (y == n - 1) ? 1 : dp[x][y + 1][step - 1];
+                
+                dp[x][y][step] = (up + down + left + right) % MOD;
+            }
+        }
+    }
+    
+    return dp[i][j][N];
+}
