@@ -1,0 +1,11 @@
+ 
+int main() {  
+    int nums[] = {3, 1, 2, 2, 2, 1, 3};  
+    int numsSize = sizeof(nums) / sizeof(nums);  
+  
+    int k = 2;  
+  
+    int result = countPairs(nums, numsSize, k);  
+
+    printf("%d\n", result); // Output: 4  
+} 
