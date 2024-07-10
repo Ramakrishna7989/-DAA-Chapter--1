@@ -1,0 +1,10 @@
+ 
+int findMax(int* arr, int n) {  
+    int max = arr; // Initialize max to the first element of the array  
+    for (int i = 1; i &lt; n; i++) {  
+        if (arr[i] &gt; max) {  
+            max = arr[i]; // Update max if a larger element is found  
+        }  
+    }  
+    return max;  
+}  
