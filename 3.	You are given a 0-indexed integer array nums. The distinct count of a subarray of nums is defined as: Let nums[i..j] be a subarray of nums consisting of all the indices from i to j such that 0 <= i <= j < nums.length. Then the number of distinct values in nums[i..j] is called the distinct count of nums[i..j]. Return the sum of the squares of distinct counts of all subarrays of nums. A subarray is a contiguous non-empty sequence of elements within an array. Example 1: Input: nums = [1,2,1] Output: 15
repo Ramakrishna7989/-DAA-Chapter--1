@@ -1,0 +1,25 @@
+#include   
+  
+int subarrayDistinctCount(int* nums, int numsSize) {  
+    int sum = 0;  
+    for (int i = 0; i &lt; numsSize; i++) {  
+        int count[1001] = {0};  
+        int distinctCount = 0;  
+        for (int j = i; j &lt; numsSize; j++) {  
+            if (count[nums[j]] == 0) {  
+                distinctCount++;  
+            }  
+            count[nums[j]]++;  
+            sum += distinctCount * distinctCount;  
+        }  
+    }  
+    return sum;  
+}  
+  
+int main() {  
+    int nums[] = {1, 2, 3, 2, 5};  
+    int numsSize = sizeof(nums) / sizeof(nums);  
+    int result = subarrayDistinctCount(nums, numsSize);  
+    printf("%d\n", result); // Output: 55  
+    return 0;  
+}  
