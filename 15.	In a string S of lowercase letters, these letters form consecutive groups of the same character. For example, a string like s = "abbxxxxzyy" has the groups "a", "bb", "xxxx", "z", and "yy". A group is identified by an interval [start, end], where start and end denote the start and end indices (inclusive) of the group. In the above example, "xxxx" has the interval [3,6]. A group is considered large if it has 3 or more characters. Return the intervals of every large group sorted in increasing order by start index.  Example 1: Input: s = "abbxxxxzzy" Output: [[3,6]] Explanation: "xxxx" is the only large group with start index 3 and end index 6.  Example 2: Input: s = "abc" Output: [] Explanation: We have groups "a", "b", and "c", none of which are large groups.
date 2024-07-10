@@ -1,0 +1,31 @@
+
+int** largeGroupPositions(char * s, int* returnSize, int** returnColumnSizes){
+    int len = strlen(s);
+    int count = 1;
+    int start = 0;
+    int end = 0;
+    int index = 0;
+    int** result = (int**)malloc(len * sizeof(int*));
+    *returnColumnSizes = (int*)malloc(len * sizeof(int));
+    
+    for(int i = 1; i <= len; i++){
+        if(s[i] == s[i-1]){
+            count++;
+            end = i;
+        }
+        else{
+            if(count >= 3){
+                result[index] = (int*)malloc(2 * sizeof(int));
+                result[index][0] = start;
+                result[index][1] = end;
+                (*returnColumnSizes)[index] = 2;
+                index++;
+            }
+            count = 1;
+            start = i;
+        }
+    }
+    
+    *returnSize = index;
+    return result;
+}
